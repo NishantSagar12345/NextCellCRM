@@ -3,17 +3,17 @@ from app.db.database import engine, Base
 from app.api import contacts, clinics # Import the new industry and core modules
 from app.core.security import get_current_tenant_id
 
-# Automatically create the database tables on startup [cite: 74]
+# Automatically create the database tables on startup
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="NexCell CRM",
-    description="Multi-tenant CRM with shared core and industry modules [cite: 12]",
+    description="Multi-tenant CRM with shared core and industry modules",
     version="1.0.0"
 )
 
 # --- REGISTER ROUTERS ---
-# This links the files you created in Hour 2 to the main app [cite: 82]
+# This links the files you created in Hour 2 to the main app 
 app.include_router(contacts.router)
 app.include_router(clinics.router)
 
