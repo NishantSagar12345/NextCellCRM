@@ -1,11 +1,11 @@
--- Core: Multi-tenant separation [cite: 21, 38]
+-- Core: Multi-tenant separation 
 CREATE TABLE tenants (
     id UUID PRIMARY KEY,
     name TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP [cite: 23]
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
 );
 
--- Core CRM entities [cite: 16, 39]
+-- Core CRM entities 
 CREATE TABLE contacts (
     id UUID PRIMARY KEY,
     tenant_id UUID REFERENCES tenants(id) NOT NULL, -- Non-negotiable isolation [cite: 55]
