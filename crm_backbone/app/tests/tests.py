@@ -122,3 +122,5 @@ def test_clinic_main_flow():
     assert len(appointments) > 0
     assert appointments[0]["practitioner_name"] == "Dr. Smith"
     assert appointments[0]["patient_id"] == patient_id
+
+  
