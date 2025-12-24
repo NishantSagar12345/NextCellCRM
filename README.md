@@ -70,4 +70,7 @@ Modularity: Industry-specific logic is isolated, making the system cheaper to ma
 
 
 ***** TEST RESULT
+
 ![Alternative Text](test-result.jpg)
+
+***** STEPS TO RUN THE PROJECT
