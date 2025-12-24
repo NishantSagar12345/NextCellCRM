@@ -3,7 +3,7 @@
 
        I have built as a production-grade CRM designed to serve clinics through a Shared Core + Industry Modules approach.
 
-      1) Core Entities (core_models.py) 
+        1. Core Entities (core_models.py) 
 
 
         + Contacts: The primary identity layer for individuals such as Customers, Leads, or Patients.
@@ -41,6 +41,11 @@
     + Database: PostgreSQL for relational integrity and native UUID support.
 
     + Auth: I chose stateless JWT because it allows the tenant_id to be securely encoded and cryptographically signed within the token payload, enabling high-performance, database-free authentication that ensures strict multi-tenant isolation.
+    + Frontend: In the future I would Next.js on Vercel to utilize server-side rendering (SSR) and global edge caching for a fast CRM interface.
+
+    + CI/CD Pipeline: In the future GitHub Actions combined with Docker Hub will be usedto automate container builds and run unit tests on every code push.
+
+    + Cloud Hosting: AWS ECS (Elastic Container Service) would be usedwith Fargate for serverless container management that scales automatically based on tenant traffic.
 
     + Integrations in the future:
 
