@@ -1,4 +1,5 @@
 ***** STEPS TO RUN THE PROJECT
+
     1 Environment Configuration
     The project uses environment variables for database connectivity and security.
 
