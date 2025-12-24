@@ -99,6 +99,7 @@ Week 4: Conduct QA testing for tenant isolation, perform security hardening, and
 
 
 ***** Coding Backbone Spec
+
     📂 Folder Structure (Domain Separation)
         The project follows a modular, domain-driven design to ensure the core CRM can be easily extended with new industry verticals:
         + /app/api: Contains the route handlers for both core (Contacts, Deals) and vertical (Clinics) modules.
@@ -130,6 +131,7 @@ Week 4: Conduct QA testing for tenant isolation, perform security hardening, and
         + Containerization: Docker Compose to ensure a "one-command" setup that bundles the API and the database for the assessor.
 
 ***** REPO STRUCTURE 
+
         /crm-backbone
         ├── /app
         │   ├── main.py           # Application entry point and router registration 
@@ -143,7 +145,7 @@ Week 4: Conduct QA testing for tenant isolation, perform security hardening, and
         ├── schemas.sql           # SQL representation of the database schema 
         ├── requirements.txt      # Python dependencies 
         └── README.md             # Product, Architecture, and Cost Plan 
-        
+
 ***** TEST RESULT
 
 ![Alternative Text](test-result.jpg)
