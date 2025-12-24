@@ -98,6 +98,52 @@ Week 3: Implement the Clinical vertical module including Patient extensions, App
 Week 4: Conduct QA testing for tenant isolation, perform security hardening, and finalize production deployment.
 
 
+***** Coding Backbone Spec
+    📂 Folder Structure (Domain Separation)
+        The project follows a modular, domain-driven design to ensure the core CRM can be easily extended with new industry verticals:
+        + /app/api: Contains the route handlers for both core (Contacts, Deals) and vertical (Clinics) modules.
+        + /app/core: Central logic for security, JWT handling, and tenant identification.
+        + /app/models: Database schemas divided into core_models (shared) and clinic_models (industry-specific).
+        + /app/db: Database connection logic and session management.
+         +/app/tests: Automated suite to verify tenant isolation and the main clinical flow.
+
+
+    🔐 Multi-Tenant Security & RBAC
+
+        + Data Isolation: Every database table includes a tenant_id column. All queries are strictly scoped using a FastAPI dependency that extracts the tenant_id from the JWT.
+        + Authentication: Uses a JWT-based system where the tenant_id is embedded in the token payload.
+        + RBAC Strategy: While the MVP uses simple authentication, the architecture is designed to support roles (e.g., Admin, Practitioner, Agent) by adding a role field to the User model and checking permissions in the route dependencies.
+
+
+    ⚙️ Environment & Schema Management
+
+        + Environment Config: Managed via a .env file to handle sensitive credentials like DATABASE_URL and SECRET_KEY.
+        + Schema Setup: Uses SQLAlchemy’s Base.metadata.create_all for a reproducible database setup on startup, ensuring the environment is ready immediately after docker-compose up
+        +API Documentation: Leverages FastAPI’s native integration with Swagger UI, available at /docs, for interactive testing and exploration of the "Main Backbone" endpoints.
+
+    🛠️ Tech Stack Justification
+
+        + Backend: FastAPI (Python) for high performance, asynchronous support, and native OpenAPI documentation.
+
+        + Database: PostgreSQL for robust relational data handling and native UUID support, which is critical for distributed multi-tenant systems.
+
+        + Containerization: Docker Compose to ensure a "one-command" setup that bundles the API and the database for the assessor.
+
+***** REPO STRUCTURE 
+        /crm-backbone
+        ├── /app
+        │   ├── main.py           # Application entry point and router registration 
+        │   ├── /api              # Route handlers (Contacts, Appointments, etc.) 
+        │   ├── /core             # Security, JWT logic, and Tenant Middleware 
+        │   ├── /models           # SQLAlchemy ORM models (Core & Clinic) 
+        │   ├── /db               # Database connection and session management 
+        │   └── /tests            # Pytest suite for isolation and main flow 
+        ├── docker-compose.yml    # Multi-container orchestration (API + DB) 
+        ├── Dockerfile            # Container build instructions for the Python API
+        ├── schemas.sql           # SQL representation of the database schema 
+        ├── requirements.txt      # Python dependencies 
+        └── README.md             # Product, Architecture, and Cost Plan 
+        
 ***** TEST RESULT
 
 ![Alternative Text](test-result.jpg)
