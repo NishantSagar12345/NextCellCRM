@@ -1,2 +1,6 @@
 venv
 ./crm_backbone/.pyttest_cache
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
