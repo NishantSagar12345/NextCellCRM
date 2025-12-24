@@ -12,8 +12,7 @@
             ALGORITHM=HS256
 
     2. Deploy with Docker
-        Build the images and start the services (API and Database) using Docker Compose. This will automatically initialize the database schema.
-        # Build and start the containers in the background
+        Build the images and start the services (API and Database) using Docker Compose. 
         docker-compose up -d --build
     3. Run the Test Suite (Main Flow & Security)
         docker-compose exec api pytest app/tests/tests.py -v
