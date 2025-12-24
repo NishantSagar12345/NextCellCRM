@@ -67,3 +67,7 @@ Reuse: Shared Core reduces duplicate code for different industry modules.
 Open-Source: Leveraging FastAPI and SQLAlchemy avoids licensing fees.
 
 Modularity: Industry-specific logic is isolated, making the system cheaper to maintain and extend.
+
+
+***** TEST RESULT
+![Alternative Text](test_result.jpg)
