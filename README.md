@@ -1,22 +1,22 @@
 ***** STEPS TO RUN THE PROJECT
 
     1 Environment Configuration
-    The project uses environment variables for database connectivity and security.
+        The project uses environment variables for database connectivity and security.
 
-    Create a file named .env in the root directory.
+        Create a file named .env in the root directory.
 
-    Copy and paste the following configuration:
+        Copy and paste the following configuration:
 
-    DATABASE_URL=postgresql://user:password@db:5432/crm_db
-    SECRET_KEY=7ca71050a9961726a84f33b9347895e3475f462a67e58838
-    ALGORITHM=HS256
+            DATABASE_URL=postgresql://user:password@db:5432/crm_db
+            SECRET_KEY=7ca71050a9961726a84f33b9347895e3475f462a67e58838
+            ALGORITHM=HS256
 
     2. Deploy with Docker
-    Build the images and start the services (API and Database) using Docker Compose. This will automatically initialize the database schema.
-    # Build and start the containers in the background
-     docker-compose up -d --build
+        Build the images and start the services (API and Database) using Docker Compose. This will automatically initialize the database schema.
+        # Build and start the containers in the background
+        docker-compose up -d --build
     3. Run the Test Suite (Main Flow & Security)
-     docker-compose exec api pytest app/tests/tests.py -v
+        docker-compose exec api pytest app/tests/tests.py -v
 
 
 ***** CRM STRUCTURE AND ORGANIZATION
