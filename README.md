@@ -72,21 +72,30 @@
         File Storage: AWS S3 for clinical attachments/notes.
 
 
-Cost Model & Efficiency 
+***** Cost Model & Efficiency 
 
 
-Estimated Monthly Infra (MVP): £30–£50.
+       + Estimated Monthly Infra (MVP): £30–£50.
+       + Calculated using AWS App Runner (~£15) and RDS t4g.micro (~£25).
 
-Calculated using AWS App Runner (~£15) and RDS t4g.micro (~£25).
 
+***** Cost Reduction :
 
-Cost Reduction :
+        + Reuse: Shared Core reduces duplicate code for different industry modules.
 
-Reuse: Shared Core reduces duplicate code for different industry modules.
+        + Open-Source: Leveraging FastAPI and SQLAlchemy avoids licensing fees.
 
-Open-Source: Leveraging FastAPI and SQLAlchemy avoids licensing fees.
+        + Modularity: Industry-specific logic is isolated, making the system cheaper to maintain and extend.
 
-Modularity: Industry-specific logic is isolated, making the system cheaper to maintain and extend.
+***** 4-Week Execution Plan
+
+Week 1: Establish the multi-tenant foundation, JWT authentication, and Dockerized PostgreSQL environment.
+
+Week 2: Develop tenant-scoped CRUD endpoints for Core CRM entities including Contacts, Deals, and Activities.
+
+Week 3: Implement the Clinical vertical module including Patient extensions, Appointments, and relational logic.
+
+Week 4: Conduct QA testing for tenant isolation, perform security hardening, and finalize production deployment.
 
 
 ***** TEST RESULT
