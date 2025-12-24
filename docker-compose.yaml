@@ -13,13 +13,12 @@ services:
     env_file:
       - .env
     volumes:
-      # This maps your local code folder to the /code directory in Docker
+     
       - ./crm_backbone:/code
     ports:
       - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://user:password@db/crm_db
-      # This ensures Python can see 'app' as a package
       - PYTHONPATH=/code
     depends_on:
       - db

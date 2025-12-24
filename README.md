@@ -5,7 +5,6 @@
 
         1. Core Entities (core_models.py) 
 
-
         + Contacts: The primary identity layer for individuals such as Customers, Leads, or Patients.
         + Deals: Manages the sales pipeline with stages like "Qualification" or "Closed".
         + Activities: A unified log for interaction history, including tasks, notes, and events.
@@ -13,11 +12,8 @@
 
         2. Clinic Industry Module (clinic_models.py) 
 
-
-        This Implemention extends the core specifically for the medical sector:
-
-
-        + Appointments: A specialized entity tracking practitioner_name, appointment_time, and status.
+       This Implemention extends the core specifically for the medical sector:
+       + Appointments: A specialized entity tracking practitioner_name, appointment_time, and status.
 
         Note: Appointment class uses patient_id as a foreign key to the Core Contact entity
  

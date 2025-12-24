@@ -8,12 +8,12 @@ CREATE TABLE tenants (
 -- Core CRM entities 
 CREATE TABLE contacts (
     id UUID PRIMARY KEY,
-    tenant_id UUID REFERENCES tenants(id) NOT NULL, -- Non-negotiable isolation [cite: 55]
+    tenant_id UUID REFERENCES tenants(id) NOT NULL, -- Non-negotiable isolation 
     first_name TEXT,
     last_name TEXT,
     email TEXT,
     phone TEXT,
-    is_patient BOOLEAN DEFAULT FALSE -- Shared core adaptability [cite: 12, 101]
+    is_patient BOOLEAN DEFAULT FALSE -- Shared core adaptability 
 );
 
 CREATE TABLE deals (
@@ -25,19 +25,19 @@ CREATE TABLE deals (
     contact_id UUID REFERENCES contacts(id)
 );
 
--- Vertical Module: Clinics [cite: 19, 40, 53]
+-- Vertical Module: Clinics 
 CREATE TABLE appointments (
     id UUID PRIMARY KEY,
-    tenant_id UUID REFERENCES tenants(id) NOT NULL, -- Tenant-scoped [cite: 55]
+    tenant_id UUID REFERENCES tenants(id) NOT NULL, -- Tenant-scoped
     patient_id UUID REFERENCES contacts(id),
     scheduled_at TIMESTAMP NOT NULL,
     treatment_type TEXT,
-    practitioner_id UUID, -- For RBAC/Staff tracking [cite: 22, 77]
+    practitioner_id UUID, -- For RBAC/Staff tracking 
     notes TEXT,
     status TEXT DEFAULT 'Scheduled'
 );
 
--- Audit logs for security basics [cite: 23, 24]
+-- Audit logs for security basics 
 CREATE TABLE audit_logs (
     id SERIAL PRIMARY KEY,
     tenant_id UUID REFERENCES tenants(id),
