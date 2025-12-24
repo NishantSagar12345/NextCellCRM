@@ -1,14 +1,13 @@
 import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
+load_dotenv()
+
 # 1. Check for 'DATABASE_URL' environment variable (used by Docker)
 # 2. Fallback to 'db' instead of 'localhost' for container networking
-# 3. Use 'postgresql://' instead of 'postgres://' for SQLAlchemy 2.0 compatibility
-SQLALCHEMY_DATABASE_URL = os.getenv(
-    "DATABASE_URL", 
-    "postgresql://user:password@db:5432/crm_db"
-)
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

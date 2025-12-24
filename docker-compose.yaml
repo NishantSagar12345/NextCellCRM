@@ -10,6 +10,8 @@ services:
 
   api:
     build: .
+    env_file:
+      - .env
     volumes:
       # This maps your local code folder to the /code directory in Docker
       - ./crm_backbone:/code

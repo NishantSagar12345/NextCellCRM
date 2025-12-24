@@ -5,11 +5,11 @@ from datetime import datetime
 from typing import Optional
 from app.db.database import get_db
 from app.core.security import get_current_tenant_id
-from app.models.core_models import Appointment
+from app.models.clinic_models import Appointment
 
 router = APIRouter(prefix="/appointments", tags=["Clinics"])
 
-# 1. Define the Schema to parse the JSON Body
+#The Schema to parse the JSON Body
 class AppointmentCreate(BaseModel):
     patient_id: str
     practitioner_name: str
@@ -34,12 +34,11 @@ def create_appointment(
     new_app = Appointment(
         patient_id=appointment_data.patient_id,
         practitioner_name=appointment_data.practitioner_name,
-        # Ensure these column names match your Appointment class in core_models.py
         appointment_time=appointment_data.appointment_time, 
         status=appointment_data.status,
         tenant_id=tenant_id
     )
     db.add(new_app)
     db.commit()
-    db.refresh(new_app) # Important: populates the ID for the test response
+    db.refresh(new_app) # Populates the ID for the test response
     return new_app

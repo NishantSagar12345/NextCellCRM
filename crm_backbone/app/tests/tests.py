@@ -1,14 +1,17 @@
 import pytest
 from fastapi.testclient import TestClient
 from app.main import app
-import jwt
+import jwt,os
 import uuid
+from dotenv import load_dotenv
 
+load_dotenv()
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 client = TestClient(app)
-SECRET_KEY = "nexcell_secret_key" # Match your security.py
 
 def create_token(tenant_id: str):
-    return jwt.encode({"tenant_id": tenant_id}, SECRET_KEY, algorithm="HS256")
+    return jwt.encode({"tenant_id": tenant_id}, SECRET_KEY, algorithm=ALGORITHM)
 
 TENANT_A_ID = "550e8400-e29b-41d4-a716-446655440000"
 TENANT_B_ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
@@ -16,9 +19,6 @@ TENANT_B_ID = "6ba7b810-9dad-11d1-80b4-00c04fd430c8"
 def test_tenant_isolation():
     token_a = create_token(TENANT_A_ID)
     token_b = create_token(TENANT_B_ID)
-    
-
-
     # Tenant A creates a contact
     client.post("/contacts/", 
                 json={"first_name": "John", "last_name": "Doe", "email": "john@a.com"},

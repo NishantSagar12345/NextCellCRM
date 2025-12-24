@@ -13,7 +13,6 @@ app = FastAPI(
 )
 
 # --- REGISTER ROUTERS ---
-# This links the files you created in Hour 2 to the main app 
 app.include_router(contacts.router)
 app.include_router(clinics.router)
 
